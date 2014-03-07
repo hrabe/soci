@@ -166,6 +166,7 @@ void odbc_vector_use_type_backend::prepare_for_bind(void *&data, SQLUINTEGER &si
             for (std::size_t i = 0; i != vecSize; ++i)
             {
                 std::size_t sz = v[i].length() * sizeof(wchar_t);
+				if (sz == 0) sz = sizeof(wchar_t); //for empty strings
                 indHolderVec_[i] = static_cast<long>(v[i].length() * sizeof(wchar_t));
                 maxSize = sz > maxSize ? sz : maxSize;
             }
@@ -202,6 +203,7 @@ void odbc_vector_use_type_backend::prepare_for_bind(void *&data, SQLUINTEGER &si
             for (std::size_t i = 0; i != vecSize; ++i)
             {
                 std::size_t sz = v[i].length();
+				if (sz == 0) sz = sizeof(wchar_t); //for empty strings
                 indHolderVec_[i] = static_cast<long>(v[i].length());
                 maxSize = sz > maxSize ? sz : maxSize;
             }
@@ -260,6 +262,7 @@ void odbc_vector_use_type_backend::prepare_for_bind(void *&data, SQLUINTEGER &si
             for (std::size_t i = 0; i != vecSize; ++i)
             {
                 std::size_t sz = v[i].size();
+				if (sz == 0) sz = 1; //for empty blobs
                 indHolderVec_[i] = static_cast<long>(sz);
                 maxSize = sz > maxSize ? sz : maxSize;
             }

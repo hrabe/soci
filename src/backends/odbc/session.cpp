@@ -380,7 +380,7 @@ std::string odbc_session_backend::get_database_product_string()
 			prod = "oracle";
 			break;
 		case prod_postgresql:
-			prod = "postresql";
+			prod = "postgresql";
 			break;
 		case prod_sqlite:
 			prod = "sqlite3";

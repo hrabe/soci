@@ -238,9 +238,27 @@ void odbc_vector_use_type_backend::prepare_for_bind(void *&data, SQLUINTEGER &si
             sqlType = SQL_TYPE_TIMESTAMP;
             cType = SQL_C_TYPE_TIMESTAMP;
             data = buf_;
-            size = 19; // This number is not the size in bytes, but the number
-                      // of characters in the date if it was written out
-                      // yyyy-mm-dd hh:mm:ss
+			if (
+				(statement_.session_.get_database_product() == soci::odbc_session_backend::prod_oracle)
+				||
+				(statement_.session_.get_database_product() == soci::odbc_session_backend::prod_mysql)
+			)
+			{
+				// oracle date columns require the pure 16 byte length to work as expected
+				size = sizeof(TIMESTAMP_STRUCT);
+				// my sql with SQL_DATETIME for values less than 1970
+				if (statement_.session_.get_database_product() == soci::odbc_session_backend::prod_mysql)
+				{
+					sqlType = SQL_DATETIME;
+				}
+
+			}
+			else
+			{
+				size = 19; // This number is not the size in bytes, but the number
+						  // of characters in the date if it was written out
+						  // yyyy-mm-dd hh:mm:ss
+			}
         }
         break;
 

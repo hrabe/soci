@@ -154,6 +154,7 @@ void odbc_vector_into_type_backend::define_by_pos(
 
             std::size_t bufSize = colSize_ * v->size();
             buf_ = new char[bufSize];
+            memset(buf_, 0, bufSize);
 
             prepare_indicators(v->size());
 
@@ -175,6 +176,7 @@ void odbc_vector_into_type_backend::define_by_pos(
 
             std::size_t bufSize = colSize_ * v->size();
             buf_ = new char[bufSize];
+            memset(buf_, 0, bufSize);
 
             prepare_indicators(v->size());
 
@@ -196,6 +198,8 @@ void odbc_vector_into_type_backend::define_by_pos(
             std::size_t bufSize = size * v->size();
 
             buf_ = new char[bufSize];
+            memset(buf_, 0, bufSize);
+
             data = buf_;
         }
         break;
@@ -217,6 +221,7 @@ void odbc_vector_into_type_backend::define_by_pos(
 
             std::size_t bufSize = colSize_ * v->size();
             buf_ = new char[bufSize];
+            memset(buf_, 0, bufSize);
 
             prepare_indicators(v->size());
 

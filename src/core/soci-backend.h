@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 #include <ctime>
+#include <errno.h>
 
 static inline time_t safeguard_mktime(struct tm * _Tm)
 {

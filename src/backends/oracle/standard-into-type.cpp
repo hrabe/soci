@@ -213,7 +213,7 @@ void oracle_standard_into_type_backend::post_fetch(
                 t->tm_sec = *pos++ - 1;
                 
                 // normalize and compute the remaining fields
-                std::mktime(t);
+                safeguard_mktime(t);
             }
         }
         else if (type_ == x_statement)

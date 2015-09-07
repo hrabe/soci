@@ -72,7 +72,7 @@ void soci::details::mysql::parse_std_tm(char const *buf, std::tm &t)
     t.tm_min  = minute;
     t.tm_sec  = second;
 
-    std::mktime(&t);
+    safeguard_mktime(&t);
 }
 
 char * soci::details::mysql::quote(MYSQL * conn, const char *s, int len)

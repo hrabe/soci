@@ -62,6 +62,6 @@ void soci::details::sqlite3::parse_std_tm(char const *buf, std::tm &t)
     t.tm_min  = minute;
     t.tm_sec  = second;
 
-    std::mktime(&t);
+    safeguard_mktime(&t);
 }
 

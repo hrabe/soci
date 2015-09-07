@@ -422,7 +422,7 @@ void oracle_standard_use_type_backend::post_use(bool gotData, indicator *ind)
                         original = bound;
 
                         // normalize and compute the remaining fields
-                        std::mktime(&original);
+                        safeguard_mktime(&original);
                     }
                 }
             }

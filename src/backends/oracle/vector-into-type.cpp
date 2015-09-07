@@ -265,7 +265,7 @@ void oracle_vector_into_type_backend::post_fetch(bool gotData, indicator *ind)
                     t.tm_sec = *pos++ - 1;
 
                     // normalize and compute the remaining fields
-                    std::mktime(&t);
+                    safeguard_mktime(&t);
                     v[i] = t;
                 }
             }

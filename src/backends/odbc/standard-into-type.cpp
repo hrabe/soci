@@ -227,7 +227,7 @@ void odbc_standard_into_type_backend::post_fetch(
             t->tm_sec = ts->second;
 
             // normalize and compute the remaining fields
-            std::mktime(t);
+            safeguard_mktime(t);
         }
         else if (type_ == x_long_long && use_string_for_bigint())
         {

@@ -35,7 +35,7 @@ static inline time_t safeguard_mktime(struct tm * _Tm)
                    * out of range.  To use a simple test that works in any time
                    * zone, we consider year 3000 out of range as well.
                    */
-  if (_Tm->tm_year >= 3000) {
+  if (_Tm->tm_year >= 1100) { // 1900 + 1100 = 3000
     /* Emulate what mktime would have done. */
     errno = EINVAL;
   } else {

@@ -44,6 +44,7 @@ static inline time_t safeguard_mktime(struct tm * _Tm)
 #else
   secs = std::mktime(_Tm);
 #endif
+  return secs;
 }
 
 namespace soci

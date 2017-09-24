@@ -1,0 +1,5 @@
+# blocklist
+branches:
+  except:
+  - ivx-master
+ 

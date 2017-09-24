@@ -8,7 +8,8 @@ language: cpp
 # http://about.travis-ci.org/docs/user/languages/cpp/
 compiler:
   - g++
-  - clang
+  
+sudo: required
 
 services:
   - mysql

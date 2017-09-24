@@ -17,15 +17,3 @@ services:
 before_install: ./bin/ci/before_install.sh
 before_script: ./bin/ci/before_script.sh
 script: ./bin/ci/script.sh
-
-notifications:
-  email:
-    recipients:
-      - soci-devel@lists.sourceforge.net
-      - mateusz@loskot.net
-  on_success: change # [always|never|change] # default: change
-  on_failure: always # [always|never|change] # default: always
-
-  irc:
-    channels:
-      - "irc.freenode.org#soci"

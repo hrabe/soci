@@ -1,10 +1,8 @@
-# SOCI-Ada Language Binding - documentation
+# Ada Bindings
 
-* [Introduction](#introduction)
-* [Compilation](#compilation)
-* [Concepts](concepts.html)
-* [Common Idioms](idioms.html)
-* [API Reference](reference.html)
+* [Concepts](concepts.md)
+* [Idioms](idioms.md)
+* [API Reference](reference.md)
 
 ## Introduction
 

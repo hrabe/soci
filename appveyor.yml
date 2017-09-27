@@ -1,5 +1,10 @@
 version: 4.0.0.{build}
 
+branches:
+  # whitelist
+  only:
+    - dev-master
+
 configuration: Release
 
 environment:

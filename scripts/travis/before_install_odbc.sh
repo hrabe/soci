@@ -42,4 +42,4 @@ cat /etc/odbcinst.ini
 # /usr/lib/x86_64-linux-gnu/odbc/libmyodbc.so
 # /usr/lib/i386-linux-gnu/odbc/libmyodbc.so
 echo 'driver path Ubuntu'
-ls -Al /usr/lib/i386-linux-gnu/odbc/
+ls -Al /usr/lib/x86_64-linux-gnu/odbc/

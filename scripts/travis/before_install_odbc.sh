@@ -23,7 +23,7 @@ echo 'build sqlite3 odbc driver'
 wget 'http://www.ch-werner.de/sqliteodbc/sqliteodbc-0.9995.tar.gz'
 tar xzf sqliteodbc-*.tar.gz
 cd sqliteodbc-*
-sudo ./configure && make
+sudo ./configure --build=x86_64-linux-gnu && make
 sudo make install
 
 echo 'install sqlite3 odbc driver'

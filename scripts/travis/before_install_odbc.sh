@@ -38,5 +38,8 @@ ls -Al /usr/local/lib/
 echo 'show odbcinst.ini'
 cat /etc/odbcinst.ini
 
-echo 'search driver'
-find / -name psqlodbca.so
+# Ubuntu 12.04 is architecture dependend
+# /usr/lib/x86_64-linux-gnu/odbc/libmyodbc.so
+# /usr/lib/i386-linux-gnu/odbc/libmyodbc.so
+echo 'driver path Ubuntu'
+ls -Al /usr/lib/i386-linux-gnu/odbc/

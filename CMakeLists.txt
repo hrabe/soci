@@ -173,6 +173,9 @@ if(SOCI_TESTS)
   file(TO_NATIVE_PATH ${PROJECT_SOURCE_DIR} TEST_ACCESS_PATH)
   configure_file(${PROJECT_SOURCE_DIR}/cmake/configs/test-access.cmake ${PROJECT_SOURCE_DIR}/tests/odbc/test-access.dsn @ONLY)
 
+  file(TO_NATIVE_PATH ${PROJECT_SOURCE_DIR} TEST_SQLITE3_PATH)
+  configure_file(${PROJECT_SOURCE_DIR}/cmake/configs/test-sqlite3.cmake ${PROJECT_SOURCE_DIR}/tests/odbc/test-sqlite3.dsn @ONLY)
+
   set(MYSQL_DRIVER_NAME "MySQL")
   if(WIN32)
     set(MYSQL_DRIVER_NAME "MySQL ODBC 5.3 ANSI Driver")

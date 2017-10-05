@@ -29,6 +29,13 @@ soci_backend_test(
   CONNSTR "test-mssql.dsn")
 
 soci_backend_test(
+  NAME sqlite3
+  BACKEND ODBC
+  DEPENDS ODBC
+  SOURCE test-odbc-sqlite3.cpp ${SOCI_TESTS_COMMON}
+  CONNSTR "test-sqlite3.dsn")
+
+soci_backend_test(
   NAME mysql
   BACKEND ODBC
   DEPENDS ODBC

@@ -9,3 +9,4 @@ mysql --version
 mysql -e 'create database soci_test;'
 psql --version
 psql -c 'create database soci_test;' -U postgres
+odbcinst -q -d

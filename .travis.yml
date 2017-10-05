@@ -16,7 +16,6 @@ sudo: required
 
 compiler:
   - g++
-  #- clang
 
 services:
   - mysql
@@ -24,15 +23,7 @@ services:
 
 env:
   matrix:
-    - SOCI_TRAVIS_BACKEND=db2
-    - SOCI_TRAVIS_BACKEND=empty
-    - SOCI_TRAVIS_BACKEND=firebird
-    - SOCI_TRAVIS_BACKEND=mysql
     - SOCI_TRAVIS_BACKEND=odbc
-    - SOCI_TRAVIS_BACKEND=postgresql
-    - SOCI_TRAVIS_BACKEND=sqlite3
-    - SOCI_TRAVIS_BACKEND=valgrind
-    - SOCI_TRAVIS_BACKEND=oracle WITH_BOOST=OFF
 
 addons:
   apt:
@@ -41,12 +32,6 @@ addons:
       - kalakris-cmake
     packages:
       - cmake
-  coverity_scan:
-    project:
-      name: "SOCI/soci"
-    build_command_prepend: "mkdir build.cov; cd build.cov; cmake .."
-    build_command: "make -j 4"
-    branch_pattern: coverity_scan
 
 before_install: ./scripts/travis/before_install.sh
 before_script: ./scripts/travis/before_script.sh

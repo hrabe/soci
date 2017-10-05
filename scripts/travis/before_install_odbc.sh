@@ -15,16 +15,16 @@ sudo odbcinst -i -d -f /usr/share/libmyodbc/odbcinst.ini
 echo 'install sqlite-dev'
 sudo apt-get install libsqlite-dev
 
-#echo 'install deps'
-#sudo apt-get debhelper
-
 echo 'install fakeroot'
 sudo apt-get install fakeroot
 
-# Install travis-oracle
-echo 'sqlite odbc install'
+# Install sqlite3odbc driver
+echo 'build sqlite3 odbc driver'
 wget 'http://www.ch-werner.de/sqliteodbc/sqliteodbc-0.9995.tar.gz'
 tar xzf sqliteodbc-*.tar.gz
 cd sqliteodbc-*
 sudo ./configure && make
 sudo make install
+
+echo 'install sqlite3 odbc driver'
+sudo odbcinst -i -d -f ./debian/unixodbc.ini

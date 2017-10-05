@@ -37,3 +37,6 @@ ls -Al /usr/local/lib/
 
 echo 'show odbcinst.ini'
 cat /etc/odbcinst.ini
+
+echo 'search driver'
+find / -name psqlodbca.so

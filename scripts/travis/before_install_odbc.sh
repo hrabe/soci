@@ -26,5 +26,5 @@ echo 'sqlite odbc install'
 wget 'http://www.ch-werner.de/sqliteodbc/sqliteodbc-0.9995.tar.gz'
 tar xzf sqliteodbc-*.tar.gz
 cd sqliteodbc-*
-sudo ./configure && make deb
+sudo ./configure && make
 sudo make install

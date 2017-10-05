@@ -33,4 +33,4 @@ echo 'debian path'
 ls -Al /usr/lib/odbc/
 
 echo 'build path'
-ls -AL /usr/local/lib/odbc/
+ls -AL /usr/local/lib/

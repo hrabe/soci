@@ -33,4 +33,7 @@ echo 'debian path'
 ls -Al /usr/lib/odbc/
 
 echo 'build path'
-ls -AL /usr/local/lib/
+ls -Al /usr/local/lib/
+
+echo 'show odbcinst.ini'
+cat /etc/odbcinst.ini

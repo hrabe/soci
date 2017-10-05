@@ -11,3 +11,10 @@ sudo apt-get install -qq \
     libmyodbc odbc-postgresql
 
 sudo odbcinst -i -d -f /usr/share/libmyodbc/odbcinst.ini
+
+# Install travis-oracle
+wget 'http://www.ch-werner.de/sqliteodbc/sqliteodbc-0.9995.tar.gz'
+tar xzf sqliteodbc-*.tar.gz
+cd sqliteodbc-*
+./configure && make deb
+make install

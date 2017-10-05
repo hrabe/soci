@@ -12,14 +12,14 @@ sudo apt-get install -qq \
 
 sudo odbcinst -i -d -f /usr/share/libmyodbc/odbcinst.ini
 
-echo 'install fakeroot'
-sudo apt-get install fakeroot
-
 echo 'install sqlite-dev'
 sudo apt-get install libsqlite-dev
 
-echo 'install deps'
-sudo apt-get debhelper
+#echo 'install deps'
+#sudo apt-get debhelper
+
+echo 'install fakeroot'
+sudo apt-get install fakeroot
 
 # Install travis-oracle
 echo 'sqlite odbc install'

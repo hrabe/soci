@@ -18,6 +18,9 @@ sudo apt-get install fakeroot
 echo 'install sqlite-dev'
 sudo apt-get install libsqlite-dev
 
+echo 'install deps'
+sudo apt-get cdbs debhelper
+
 # Install travis-oracle
 echo 'sqlite odbc install'
 wget 'http://www.ch-werner.de/sqliteodbc/sqliteodbc-0.9995.tar.gz'

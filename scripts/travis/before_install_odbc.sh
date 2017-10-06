@@ -31,7 +31,7 @@ sudo make install
 
 echo 'install sqlite3 odbc driver'
 # sed -i 's/lib\/odbc/lib\/x86_64-linux-gnu\/odbc/' ./debian/unixodbc.ini
-sed -i 's/usr\/lib/usr\/local\/lib/' ./debian/unixodbc.ini
+sed -i 's/usr\/lib\/odbc/usr\/local\/lib/' ./debian/unixodbc.ini
 sudo odbcinst -i -d -f ./debian/unixodbc.ini
 
 echo 'debian path'

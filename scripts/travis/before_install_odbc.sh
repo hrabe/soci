@@ -13,7 +13,7 @@ sudo apt-get install -qq \
 
 sudo odbcinst -i -d -f /usr/share/libmyodbc/odbcinst.ini
 
-# echo 'show odbcinst.ini'
-# cat /etc/odbcinst.ini
+echo 'show odbcinst.ini'
+cat /etc/odbcinst.ini
 
-install_sqlite3
+# install_sqlite3

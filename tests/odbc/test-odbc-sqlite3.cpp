@@ -21,89 +21,6 @@ using namespace soci::tests;
 std::string connectString;
 backend_factory const &backEnd = *soci::factory_odbc();
 
-// ROWID test
-// In sqlite3 the row id can be called ROWID, _ROWID_ or oid
-TEST_CASE("SQLite rowid", "[sqlite][rowid][oid]")
-{
-    soci::session sql(backEnd, connectString);
-
-    try { sql << "drop table test1"; }
-    catch (soci_error const &) {} // ignore if error
-
-    sql <<
-    "create table test1 ("
-    "    id integer,"
-    "    name varchar(100)"
-    ")";
-
-    sql << "insert into test1(id, name) values(7, \'John\')";
-
-    rowid rid(sql);
-    sql << "select oid from test1 where id = 7", into(rid);
-
-    int id;
-    std::string name;
-
-    sql << "select id, name from test1 where oid = :rid",
-    into(id), into(name), use(rid);
-
-    CHECK(id == 7);
-    CHECK(name == "John");
-
-    sql << "drop table test1";
-}
-
-// BLOB test
-struct blob_table_creator : public table_creator_base
-{
-    blob_table_creator(soci::session & sql)
-        : table_creator_base(sql)
-    {
-        sql <<
-            "create table soci_test ("
-            "    id integer,"
-            "    img blob"
-            ")";
-    }
-};
-
-TEST_CASE("SQLite blob", "[sqlite][blob]")
-{
-    soci::session sql(backEnd, connectString);
-
-    blob_table_creator tableCreator(sql);
-
-    char buf[] = "abcdefghijklmnopqrstuvwxyz";
-
-    sql << "insert into soci_test(id, img) values(7, '')";
-
-    {
-        blob b(sql);
-
-        sql << "select img from soci_test where id = 7", into(b);
-        CHECK(b.get_len() == 0);
-
-        b.write(0, buf, sizeof(buf));
-        CHECK(b.get_len() == sizeof(buf));
-        sql << "update soci_test set img=? where id = 7", use(b);
-
-        b.append(buf, sizeof(buf));
-        CHECK(b.get_len() == 2 * sizeof(buf));
-        sql << "insert into soci_test(id, img) values(8, ?)", use(b);
-    }
-    {
-        blob b(sql);
-        sql << "select img from soci_test where id = 8", into(b);
-        CHECK(b.get_len() == 2 * sizeof(buf));
-        char buf2[100];
-        b.read(0, buf2, 10);
-        CHECK(std::strncmp(buf2, "abcdefghij", 10) == 0);
-
-        sql << "select img from soci_test where id = 7", into(b);
-        CHECK(b.get_len() == sizeof(buf));
-
-    }
-}
 
 // This test was put in to fix a problem that occurs when there are both
 // into and use elements in the same query and one of them (into) binds
@@ -235,19 +152,6 @@ TEST_CASE("SQLite vector long long", "[sqlite][vector][longlong]")
     CHECK(v2[2] == 1000000000002LL);
     CHECK(v2[3] == 1000000000001LL);
     CHECK(v2[4] == 1000000000000LL);
-}
-
-TEST_CASE("SQLite DDL wrappers", "[sqlite][ddl]")
-{
-    soci::session sql(backEnd, connectString);
-
-    int i = -1;
-    sql << "select length(" + sql.empty_blob() + ")", into(i);
-    CHECK(i == 0);
-    sql << "select " + sql.nvl() + "(1, 2)", into(i);
-    CHECK(i == 1);
-    sql << "select " + sql.nvl() + "(NULL, 2)", into(i);
-    CHECK(i == 2);
 }
 
 struct table_creator_for_get_last_insert_id : table_creator_base
@@ -384,6 +288,11 @@ public:
     {
         return "length(" + s + ")";
     }
+
+	bool has_silent_truncate_bug(session&) const SOCI_OVERRIDE
+	{ 
+		return true; 
+	}
 };
 
 int main(int argc, char** argv)

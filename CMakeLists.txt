@@ -174,6 +174,10 @@ if(SOCI_TESTS)
   configure_file(${PROJECT_SOURCE_DIR}/cmake/configs/test-access.cmake ${PROJECT_SOURCE_DIR}/tests/odbc/test-access.dsn @ONLY)
 
   file(TO_NATIVE_PATH ${PROJECT_SOURCE_DIR} TEST_SQLITE3_PATH)
+  set(SQLITE3_DRIVER_NAME "SQLite3")
+  if(WIN32)
+    set(SQLITE3_DRIVER_NAME "SQLite3 ODBC Driver")
+  endif()
   configure_file(${PROJECT_SOURCE_DIR}/cmake/configs/test-sqlite3.cmake ${PROJECT_SOURCE_DIR}/tests/odbc/test-sqlite3.dsn @ONLY)
 
   set(MYSQL_DRIVER_NAME "MySQL")

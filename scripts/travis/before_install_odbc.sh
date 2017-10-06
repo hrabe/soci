@@ -16,7 +16,7 @@ sudo odbcinst -i -d -f /usr/share/libmyodbc/odbcinst.ini
 # cat /etc/odbcinst.ini
 
 echo 'install libsqlite3-dev_3.16.2-5_amd64.deb'
-sudo apt-get purge sqlite
+sudo apt-get purge libsqlite3 libsqlite3-dev
 wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-0_3.16.2-5_amd64.deb'
 #sudo dpkg -i libsqlite3-0_3.16.2-5_amd64.deb
 wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-dev_3.16.2-5_amd64.deb'

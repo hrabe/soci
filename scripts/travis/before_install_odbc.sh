@@ -16,7 +16,7 @@ sudo odbcinst -i -d -f /usr/share/libmyodbc/odbcinst.ini
 # cat /etc/odbcinst.ini
 
 echo 'install sqlite-dev'
-sudo apt-get install libsqlite-dev
+sudo apt-get install sqlite3 libsqlite3-dev
 
 echo 'install fakeroot'
 sudo apt-get install fakeroot

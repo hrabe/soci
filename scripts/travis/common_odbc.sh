@@ -11,17 +11,15 @@ fi
 install_sqlite3()
 {
   echo 'install libsqlite3-dev_3.16.2-5_amd64.deb'
-  #sudo apt-get remove libsqlite3-0 libsqlite3-dev
-  wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-0_3.16.2-5_amd64.deb'
-  #sudo dpkg -i libsqlite3-0_3.16.2-5_amd64.deb
-  wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-dev_3.16.2-5_amd64.deb'
-  sudo dpkg -i libsqlite3-0_3.16.2-5_amd64.deb libsqlite3-dev_3.16.2-5_amd64.deb
-  sudo apt-get -f install
+  # wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-0_3.16.2-5_amd64.deb'
+  # wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-dev_3.16.2-5_amd64.deb'
+  # sudo dpkg -i libsqlite3-0_3.16.2-5_amd64.deb libsqlite3-dev_3.16.2-5_amd64.deb
+  # sudo apt-get -f install
 
   # echo 'install sqlite3-dev'
   # sudo add-apt-repository ppa:jonathonf/backports
   # sudo apt-get update && sudo apt-get install sqlite3 libsqlite3-dev
-  ### sudo apt-get update && apt-get install sqlite3 libsqlite3-dev
+ ssudo apt-get update && apt-get install sqlite3 libsqlite3-dev
 
   echo 'install fakeroot'
   sudo apt-get install fakeroot

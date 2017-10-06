@@ -19,7 +19,7 @@ install_sqlite3()
   # echo 'install sqlite3-dev'
   # sudo add-apt-repository ppa:jonathonf/backports
   # sudo apt-get update && sudo apt-get install sqlite3 libsqlite3-dev
- ssudo apt-get update && apt-get install sqlite3 libsqlite3-dev
+ sudo apt-get update && apt-get install sqlite3 libsqlite3-dev
 
   echo 'install fakeroot'
   sudo apt-get install fakeroot

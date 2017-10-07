@@ -8,10 +8,6 @@ if [[ "$TRAVIS" != "true" ]] ; then
 	exit 1
 fi
 
-http://launchpadlibrarian.net/310407012/libsqlite3-0_3.16.2-3_amd64.deb
-http://launchpadlibrarian.net/310407013/libsqlite3-dev_3.16.2-3_amd64.deb
-http://launchpadlibrarian.net/310407015/sqlite3_3.16.2-3_amd64.deb
-
 install_sqlite3()
 {
   echo 'install libsqlite3-dev_3.16.2-5_amd64.deb'

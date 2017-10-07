@@ -10,11 +10,21 @@ fi
 
 install_sqlite3()
 {
-  echo 'install libsqlite3-dev_3.16.2-5_amd64.deb'
-  wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-0_3.16.2-5_amd64.deb'
-  wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-dev_3.16.2-5_amd64.deb'
-  sudo dpkg -i libsqlite3-0_3.16.2-5_amd64.deb libsqlite3-dev_3.16.2-5_amd64.deb
-  sudo apt-get -f install
+  # echo 'install libsqlite3-dev_3.16.2-5_amd64.deb'
+  # wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-0_3.16.2-5_amd64.deb'
+  # wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-dev_3.16.2-5_amd64.deb'
+  # sudo dpkg -i libsqlite3-0_3.16.2-5_amd64.deb libsqlite3-dev_3.16.2-5_amd64.deb
+  # sudo apt-get -f install
+
+  echo 'install sqlite from scratch'
+  wget 'http://www.sqlite.org/2017/sqlite-autoconf-3200100.tar.gz'
+  tar xzf sqlite-autoconf-*.tar.gz
+  cd sqlite-autoconf-*
+  sudo ./configure --build=x86_64-linux-gnu && make
+  sudo make install
+  
+  
+  cd ..
 
   # echo 'install sqlite3-dev'
   # sudo add-apt-repository ppa:jonathonf/backports

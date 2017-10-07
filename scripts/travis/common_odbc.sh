@@ -19,9 +19,9 @@ install_sqlite3()
   wget 'http://launchpadlibrarian.net/284875588/libreadline7_7.0-0ubuntu2_amd64.deb'
   wget 'http://launchpadlibrarian.net/295938781/libsqliteodbc_0.9995-1_amd64.deb'
 #  wget 'http://launchpadlibrarian.net/271601076/libtinfo5_6.0+20160625-1ubuntu1_amd64.deb'
+  cd ..
   sudo dpkg -i -R --force-depends ./tmp-sqlite
   sudo apt-get -f install
-  cd ..
   
   echo '>>> debian lib path'
   ls -Al /usr/lib/odbc/

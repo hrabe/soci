@@ -8,14 +8,26 @@ if [[ "$TRAVIS" != "true" ]] ; then
 	exit 1
 fi
 
+http://launchpadlibrarian.net/310407012/libsqlite3-0_3.16.2-3_amd64.deb
+http://launchpadlibrarian.net/310407013/libsqlite3-dev_3.16.2-3_amd64.deb
+http://launchpadlibrarian.net/310407015/sqlite3_3.16.2-3_amd64.deb
+
 install_sqlite3()
 {
   echo 'install libsqlite3-dev_3.16.2-5_amd64.deb'
-  wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-0_3.16.2-5_amd64.deb'
-  wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-dev_3.16.2-5_amd64.deb'
-  sudo dpkg -i libsqlite3-0_3.16.2-5_amd64.deb 
-  sudo dpkg -i libsqlite3-dev_3.16.2-5_amd64.deb
+  mkdir -p ./tmp-sqlite
+  cd tmp-sqlite
+  wget 'http://launchpadlibrarian.net/310407015/sqlite3_3.16.2-3_amd64.deb'
+  wget 'http://launchpadlibrarian.net/310407012/libsqlite3-0_3.16.2-3_amd64.deb'
+  wget 'http://launchpadlibrarian.net/310407013/libsqlite3-dev_3.16.2-3_amd64.deb'
+  cd ..
+  sudo dpkg -i -R ./tmp-sqlite
   sudo apt-get -f install
+  # wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-0_3.16.2-5_amd64.deb'
+  # wget 'http://ftp.de.debian.org/debian/pool/main/s/sqlite3/libsqlite3-dev_3.16.2-5_amd64.deb'
+  # sudo dpkg -i libsqlite3-0_3.16.2-5_amd64.deb
+  # sudo dpkg -i libsqlite3-dev_3.16.2-5_amd64.deb
+  # sudo apt-get -f install
 
   echo 'install fakeroot'
   sudo apt-get install fakeroot

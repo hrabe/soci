@@ -19,20 +19,20 @@ install_sqlite3()
   echo 'install fakeroot'
   sudo apt-get install fakeroot
 
-  echo 'install sqlite from scratch'
-  sqlite3 --version
-  # wget 'http://www.sqlite.org/2017/sqlite-autoconf-3200100.tar.gz'
-  wget 'http://www.sqlite.org/2016/sqlite-autoconf-3150200.tar.gz'
-  tar xzf sqlite-autoconf-*.tar.gz
-  cd sqlite-autoconf-*
-  sudo ./configure --build=x86_64-linux-gnu && make
-  sudo make install
-   
-  cd ..
+  # echo 'install sqlite from scratch'
+  # sqlite3 --version
+  # # wget 'http://www.sqlite.org/2017/sqlite-autoconf-3200100.tar.gz'
+  # wget 'http://www.sqlite.org/2016/sqlite-autoconf-3150200.tar.gz'
+  # tar xzf sqlite-autoconf-*.tar.gz
+  # cd sqlite-autoconf-*
+  # sudo ./configure --build=x86_64-linux-gnu && make
+  # sudo make install
+  #
+  # cd ..
 
-  # echo 'install sqlite3-dev'
-  # sudo add-apt-repository ppa:jonathonf/backports
-  # sudo apt-get update && sudo apt-get install sqlite3 libsqlite3-dev
+  echo 'install sqlite3-dev'
+  sudo add-apt-repository ppa:jonathonf/backports
+  sudo apt-get update && sudo apt-get install sqlite3 libsqlite3-dev
   ### sudo apt-get update && apt-get install sqlite libsqlite-dev
 
   # Install sqlite3odbc driver

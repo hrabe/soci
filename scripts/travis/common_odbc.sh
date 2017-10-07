@@ -20,7 +20,8 @@ install_sqlite3()
   sudo apt-get install fakeroot
 
   echo 'install sqlite from scratch'
-  wget 'http://www.sqlite.org/2017/sqlite-autoconf-3200100.tar.gz'
+  # wget 'http://www.sqlite.org/2017/sqlite-autoconf-3200100.tar.gz'
+  wget 'http://www.sqlite.org/2016/sqlite-autoconf-3150200.tar.gz'
   tar xzf sqlite-autoconf-*.tar.gz
   cd sqlite-autoconf-*
   sudo ./configure --build=x86_64-linux-gnu && make

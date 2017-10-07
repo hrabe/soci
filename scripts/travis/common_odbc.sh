@@ -31,8 +31,12 @@ install_sqlite3()
   # cd ..
 
   echo 'install sqlite3-dev'
-  sudo add-apt-repository -y ppa:jonathonf/backports
-  sudo apt-get update && sudo apt-get install sqlite3 libsqlite3-dev
+  # sudo add-apt-repository -y ppa:jonathonf/backports
+ #  sudo apt-get update && sudo apt-get install sqlite3 libsqlite3-dev
+  
+  sudo add-apt-repository ppa:jonathonf/backports -y
+  sudo apt-get update -q
+  sudo apt-get install sqlite3 libsqlite3-dev -y
   ### sudo apt-get update && apt-get install sqlite libsqlite-dev
 
   # Install sqlite3odbc driver

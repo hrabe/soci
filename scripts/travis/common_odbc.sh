@@ -24,9 +24,9 @@ install_sqlite3()
   sudo dpkg -i -R --force-depends ./tmp-sqlite/libsqlite3-0_3.16.2-3_amd64.deb ./tmp-extracted
   sudo apt-get -f install
   
-  echo '>>> extract and list ./tmp-extracted'
-  sudo dpkg -x ./tmp-sqlite/libsqlite3-0_3.16.2-3_amd64.deb ./tmp-extracted
-  ls -Al ./tmp-extracted/
+  echo '>>> show content libsqlite3-0_3.16.2-3_amd64.deb'
+  sudo dpkg -c ./tmp-sqlite/libsqlite3-0_3.16.2-3_amd64.deb #./tmp-extracted
+  # ls -Al ./tmp-extracted/
   
   echo '>>> debian lib path'
   ls -Al /usr/lib/odbc/

@@ -38,8 +38,11 @@ install_sqlite3()
   echo '>>> driver path Ubuntu'
   ls -Al /usr/lib/x86_64-linux-gnu/odbc/
   
-  echo 'find libsqlite3* files'
-  sudo find / -name libsqlite3*
+  echo '>>> find libsqlite3* files'
+  find / -name libsqlite3*
+
+  echo '>>> find libsqliteodbc* files'
+  find / -name libsqlite3*
 }
 
 install_sqlite_old()

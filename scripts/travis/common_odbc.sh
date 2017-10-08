@@ -8,6 +8,40 @@ if [[ "$TRAVIS" != "true" ]] ; then
 	exit 1
 fi
 
+download_and_install_sqlite_libs()
+{
+  echo ">>> download & install newer ubuntu sqlite libs"
+  mkdir -p ./debs-ubuntu
+  cd debs-ubuntu
+  wget 'http://launchpadlibrarian.net/310407012/libsqlite3-0_3.16.2-3_amd64.deb'
+  wget 'http://launchpadlibrarian.net/310407013/libsqlite3-dev_3.16.2-3_amd64.deb'  
+#  wget 'http://launchpadlibrarian.net/295938781/libsqliteodbc_0.9995-1_amd64.deb'
+  cd ..
+  sudo dpkg -i -R --force-depends ./debs-ubuntu/
+  sudo apt-get -f install
+}
+
+download_and_compile_sqlite_odbc()
+{
+  echo '>>> download and install sqlite odbc driver'
+  wget 'http://www.ch-werner.de/sqliteodbc/sqliteodbc-0.9995.tar.gz'
+  tar xzf sqliteodbc-*.tar.gz
+  cd sqliteodbc-*
+  sudo ./configure --build=x86_64-linux-gnu && make
+  sudo make install
+
+  echo 'install sqlite3 odbc driver'
+  # sed -i 's/lib\/odbc/lib\/x86_64-linux-gnu\/odbc/' ./debian/unixodbc.ini
+  sed -i 's/usr\/lib\/odbc/usr\/local\/lib/' ./debian/unixodbc.ini
+  sudo odbcinst -i -d -f ./debian/unixodbc.ini
+}
+
+show_odbcinst_ini()
+{
+  echo '>>> show odbcinst.ini'
+  cat /etc/odbcinst.ini
+}
+
 install_sqlite3()
 {
   echo '>>> install libsqlite3-dev_3.16.2-5_amd64.deb'

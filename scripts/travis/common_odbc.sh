@@ -12,16 +12,21 @@ install_sqlite3()
 {
   echo '>>> install libsqlite3-dev_3.16.2-5_amd64.deb'
   mkdir -p ./tmp-sqlite
+  mkdir -p ./tmp-extracted
   cd tmp-sqlite
-  wget 'http://launchpadlibrarian.net/310407015/sqlite3_3.16.2-3_amd64.deb'
+#  wget 'http://launchpadlibrarian.net/310407015/sqlite3_3.16.2-3_amd64.deb'
   wget 'http://launchpadlibrarian.net/310407012/libsqlite3-0_3.16.2-3_amd64.deb'
-  wget 'http://launchpadlibrarian.net/310407013/libsqlite3-dev_3.16.2-3_amd64.deb'
-  wget 'http://launchpadlibrarian.net/284875588/libreadline7_7.0-0ubuntu2_amd64.deb'
+#  wget 'http://launchpadlibrarian.net/310407013/libsqlite3-dev_3.16.2-3_amd64.deb'
+#  wget 'http://launchpadlibrarian.net/284875588/libreadline7_7.0-0ubuntu2_amd64.deb'
   wget 'http://launchpadlibrarian.net/295938781/libsqliteodbc_0.9995-1_amd64.deb'
 #  wget 'http://launchpadlibrarian.net/271601076/libtinfo5_6.0+20160625-1ubuntu1_amd64.deb'
   cd ..
-  sudo dpkg -i -R --force-depends ./tmp-sqlite
+  sudo dpkg -i -R --force-depends ./tmp-sqlite/libsqlite3-0_3.16.2-3_amd64.deb ./tmp-extracted
   sudo apt-get -f install
+  
+  echo '>>> extract and list ./tmp-sqlite/'
+  sudo dpkg -x ./tmp-sqlite/
+  ls -Al ./tmp-sqlite/
   
   echo '>>> debian lib path'
   ls -Al /usr/lib/odbc/

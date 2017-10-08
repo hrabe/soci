@@ -35,14 +35,11 @@ install_sqlite3()
   # Ubuntu 12.04 is architecture dependend
   # /usr/lib/x86_64-linux-gnu/odbc/libmyodbc.so
   # /usr/lib/i386-linux-gnu/odbc/libmyodbc.so
-  echo '>>> driver path Ubuntu'
-  ls -Al /usr/lib/x86_64-linux-gnu/odbc/
-  
-  echo '>>> find libsqlite3* files'
-  find / -name libsqlite3*
+  echo '>>> /usr/lib/x86_64-linux-gnu/'
+  ls -Al /usr/lib/x86_64-linux-gnu/
 
-  echo '>>> find libsqliteodbc* files'
-  find / -name libsqlite3*
+  echo '>>> /usr/lib/x86_64-linux-gnu/odbc/'
+  ls -Al /usr/lib/x86_64-linux-gnu/odbc/  
 }
 
 install_sqlite_old()

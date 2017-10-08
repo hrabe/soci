@@ -36,7 +36,10 @@ install_sqlite3()
   # /usr/lib/x86_64-linux-gnu/odbc/libmyodbc.so
   # /usr/lib/i386-linux-gnu/odbc/libmyodbc.so
   echo '>>> driver path Ubuntu'
-  ls -Al /usr/lib/x86_64-linux-gnu/odbc/  
+  ls -Al /usr/lib/x86_64-linux-gnu/odbc/
+  
+  echo 'find libsqlite3* files'
+  sudo find / -name libsqlite3*
 }
 
 install_sqlite_old()

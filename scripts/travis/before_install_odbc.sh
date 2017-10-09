@@ -5,6 +5,7 @@
 #
 source ${TRAVIS_BUILD_DIR}/scripts/travis/common.sh
 source ${TRAVIS_BUILD_DIR}/scripts/travis/common_odbc.sh
+source ${TRAVIS_BUILD_DIR}/scripts/travis/before_install_firebird.sh
 
 sudo apt-get install -qq \
     tar bzip2 \

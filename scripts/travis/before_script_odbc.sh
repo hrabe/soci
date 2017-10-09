@@ -8,6 +8,7 @@ source ${TRAVIS_BUILD_DIR}/scripts/travis/common.sh
 mysql --version
 mysql -e 'create database soci_test;'
 psql --version
-psql -c 'create database soci_test;' -U postgres
-echo 'ODBC Driver available:'
+psql -c 'create database soci_test;' -U postgres > /dev/null
+sqlite3 --version
+echo '>>> Installed ODBC Driver:'
 odbcinst -q -d

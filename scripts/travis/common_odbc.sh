@@ -13,6 +13,7 @@ download_and_install_sqlite_libs()
   echo ">>> download & install newer ubuntu sqlite libs"
   mkdir -p ./debs-ubuntu
   cd debs-ubuntu
+  wget 'http://launchpadlibrarian.net/310407015/sqlite3_3.16.2-3_amd64.deb'
   wget 'http://launchpadlibrarian.net/310407012/libsqlite3-0_3.16.2-3_amd64.deb'
   wget 'http://launchpadlibrarian.net/310407013/libsqlite3-dev_3.16.2-3_amd64.deb'  
   wget 'http://launchpadlibrarian.net/295938781/libsqliteodbc_0.9995-1_amd64.deb'
@@ -24,6 +25,7 @@ download_and_install_sqlite_libs()
 sqlite3_version()
 {
   echo 'SQlite3 3.16.2'
+  sqlite3 --version
 }
 
 download_and_compile_sqlite_odbc()

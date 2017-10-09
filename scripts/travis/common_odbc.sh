@@ -8,7 +8,7 @@ if [[ "$TRAVIS" != "true" ]] ; then
 	exit 1
 fi
 
-download_and_install_sqlite_libs()
+download_and_install_sqlite_driver()
 {
   echo ">>> download & install newer ubuntu sqlite libs"
   mkdir -p ./debs-ubuntu
@@ -28,6 +28,23 @@ sqlite3_version()
   # sqlite3 --version
 }
 
+download_and_install_firebird_driver()
+{
+  wget 'https://netcologne.dl.sourceforge.net/project/firebird/firebird-ODBC-driver/2.0.5-Release/OdbcFb-LIB-2.0.5.156.amd64.gz'
+  tar -xzf OdbcFb-LIB-2.0.5.156.amd64.gz
+  cp libOdbcFb.so /usr/lib/x86_64-linux-gnu/odbc/.
+  ln -s /usr/lib/x86_64-linux-gnu/odbc/libfbclient.so.2 /usr/lib/x86_64-linux-gnu/odbc/libgds.so
+  cat <<EOF >> ./firebird.ini
+[Firebird] 
+Description = InterBase/Firebird ODBC Driver 
+Driver = /usr/lib/libOdbcFb.so 
+Setup = /usr/lib/libOdbcFbS.so 
+Threading = 1 
+FileUsage = 1 
+EOF
+  sudo odbcinst -i -d -f ./firebird.ini
+}
+
 download_and_compile_sqlite_odbc()
 {
   echo '>>> download and install sqlite odbc driver'
@@ -38,7 +55,6 @@ download_and_compile_sqlite_odbc()
   sudo make install
 
   echo 'install sqlite3 odbc driver'
-  # sed -i 's/lib\/odbc/lib\/x86_64-linux-gnu\/odbc/' ./debian/unixodbc.ini
   sed -i 's/usr\/lib\/odbc/usr\/local\/lib/' ./debian/unixodbc.ini
   sudo odbcinst -i -d -f ./debian/unixodbc.ini
 }

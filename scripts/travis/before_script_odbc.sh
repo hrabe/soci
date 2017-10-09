@@ -10,6 +10,6 @@ mysql --version
 mysql -e 'create database soci_test;'
 psql --version
 psql -c 'create database soci_test;' -U postgres > /dev/null
-sqlite3_version # due to deinstalled sqlite3 binary
+sqlite3_version
 echo '>>> Installed ODBC Driver:'
 odbcinst -q -d

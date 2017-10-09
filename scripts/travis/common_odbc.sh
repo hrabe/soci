@@ -39,8 +39,8 @@ download_and_install_firebird_driver()
 Description = InterBase/Firebird ODBC Driver 
 Driver = libOdbcFb.so 
 Setup = libOdbcFbS.so 
-Threading = 1 
-FileUsage = 1 
+Threading = 2
+FileUsage = 1
 EOF
   sudo odbcinst -i -d -f ./firebird.ini
 }

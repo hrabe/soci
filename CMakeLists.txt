@@ -180,6 +180,13 @@ if(SOCI_TESTS)
   endif()
   configure_file(${PROJECT_SOURCE_DIR}/cmake/configs/test-sqlite3.cmake ${PROJECT_SOURCE_DIR}/tests/odbc/test-sqlite3.dsn @ONLY)
 
+  set(FIREBIRD_DRIVER_NAME "Firebird")
+  set(FIREBIRD_DB_NAME "LOCALHOST:/tmp/soci_test.fdb")
+  if(WIN32)
+    set(FIREBIRD_DRIVER_NAME "Firebird/InterBase(r) driver")
+  endif()
+  configure_file(${PROJECT_SOURCE_DIR}/cmake/configs/test-firebird.cmake ${PROJECT_SOURCE_DIR}/tests/odbc/test-firebird.dsn @ONLY)
+
   set(MYSQL_DRIVER_NAME "MySQL")
   if(WIN32)
     set(MYSQL_DRIVER_NAME "MySQL ODBC 5.3 ANSI Driver")

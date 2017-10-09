@@ -36,6 +36,13 @@ soci_backend_test(
   CONNSTR "test-sqlite3.dsn")
 
 soci_backend_test(
+  NAME firebird
+  BACKEND ODBC
+  DEPENDS ODBC
+  SOURCE test-odbc-firebird.cpp ${SOCI_TESTS_COMMON}
+  CONNSTR "test-firebird.dsn")
+
+soci_backend_test(
   NAME mysql
   BACKEND ODBC
   DEPENDS ODBC

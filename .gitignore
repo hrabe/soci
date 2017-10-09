@@ -14,6 +14,7 @@ src/core/soci_backends_config.h
 tests/odbc/test-access.dsn
 tests/odbc/test-mysql.dsn
 tests/odbc/test-sqlite3.dsn
+tests/odbc/test-firebird.dsn
 
 # ... and the rest of CMake spam
 CMakeFiles/

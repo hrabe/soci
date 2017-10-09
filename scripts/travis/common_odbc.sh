@@ -21,6 +21,11 @@ download_and_install_sqlite_libs()
   sudo apt-get -f install
 }
 
+sqlite3_version()
+{
+  echo 'SQlite3 3.16.2'
+}
+
 download_and_compile_sqlite_odbc()
 {
   echo '>>> download and install sqlite odbc driver'

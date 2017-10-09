@@ -4,11 +4,12 @@
 # Mateusz Loskot <mateusz@loskot.net>, http://github.com/SOCI
 #
 source ${TRAVIS_BUILD_DIR}/scripts/travis/common.sh
+source ${TRAVIS_BUILD_DIR}/scripts/travis/common_odbc.sh
 
 mysql --version
 mysql -e 'create database soci_test;'
 psql --version
 psql -c 'create database soci_test;' -U postgres > /dev/null
-sqlite3 --version
+sqlite3_version # due to deinstalled sqlite3 binary
 echo '>>> Installed ODBC Driver:'
 odbcinst -q -d

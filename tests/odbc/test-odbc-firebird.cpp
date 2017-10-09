@@ -12,6 +12,7 @@
 #include <ctime>
 #include <cmath>
 
+#define SOCI_POSTGRESQL_NOPARAMS
 #include "common-tests.h"
 
 using namespace soci;
@@ -30,8 +31,8 @@ struct TableCreator1 : public tests::table_creator_base
         "str varchar(20), sh smallint, ul bigint, d double precision, "
         "num76 numeric(7,6), "
         "tm timestamp, i1 integer, i2 integer, i3 integer, name varchar(20))";
-        sql.commit();
-        sql.begin();
+//        sql.commit();
+//        sql.begin();
     }
 };
 
@@ -42,8 +43,8 @@ struct TableCreator2 : public tests::table_creator_base
     {
         sql  << "create table soci_test(num_float float, num_int integer, "
         "name varchar(20), sometime timestamp, chr char)";
-        sql.commit();
-        sql.begin();
+//        sql.commit();
+//        sql.begin();
     }
 };
 
@@ -54,8 +55,8 @@ struct TableCreator3 : public tests::table_creator_base
     {
         sql << "create table soci_test(name varchar(100) not null, "
         "phone varchar(15))";
-        sql.commit();
-        sql.begin();
+//        sql.commit();
+//        sql.begin();
     }
 };
 
@@ -65,8 +66,8 @@ struct TableCreator4 : public tests::table_creator_base
             : tests::table_creator_base(sql)
     {
         sql << "create table soci_test(val integer)";
-        sql.commit();
-        sql.begin();
+//        sql.commit();
+//        sql.begin();
     }
 };
 
@@ -76,8 +77,8 @@ struct TableCreatorCLOB : public tests::table_creator_base
             : tests::table_creator_base(sql)
     {
         sql << "create table soci_test(id integer, s blob sub_type text)";
-        sql.commit();
-        sql.begin();
+//        sql.commit();
+//        sql.begin();
     }
 };
 
@@ -87,8 +88,8 @@ struct TableCreatorXML : public tests::table_creator_base
             : tests::table_creator_base(sql)
     {
         sql << "create table soci_test(id integer, x blob sub_type text)";
-        sql.commit();
-        sql.begin();
+//        sql.commit();
+//        sql.begin();
     }
 };
 
@@ -120,24 +121,14 @@ class test_context : public tests::test_context_base
             return new TableCreator4(s);
         }
 
-        tests::table_creator_base* table_creator_clob(soci::session& s) const SOCI_OVERRIDE
-        {
-            return new TableCreatorCLOB(s);
-        }
-
-        tests::table_creator_base* table_creator_xml(soci::session& s) const SOCI_OVERRIDE
-        {
-            return new TableCreatorXML(s);
-        }
-
         std::string to_date_time(std::string const &datdt_string) const SOCI_OVERRIDE
         {
             return "'" + datdt_string + "'";
         }
 
-        void on_after_ddl(soci::session& sql) const SOCI_OVERRIDE
+        bool has_silent_truncate_bug(session&) const SOCI_OVERRIDE
         {
-            sql.commit();
+            return true;
         }
 
         std::string sql_length(std::string const& s) const SOCI_OVERRIDE

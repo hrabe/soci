@@ -37,8 +37,8 @@ download_and_install_firebird_driver()
   cat <<EOF >> ./firebird.ini
 [Firebird] 
 Description = InterBase/Firebird ODBC Driver 
-Driver = /usr/lib/libOdbcFb.so 
-Setup = /usr/lib/libOdbcFbS.so 
+Driver = libOdbcFb.so 
+Setup = libOdbcFbS.so 
 Threading = 1 
 FileUsage = 1 
 EOF

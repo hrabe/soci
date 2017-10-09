@@ -4,7 +4,7 @@
 # Copyright (c) 2013 Mateusz Loskot <mateusz@loskot.net>
 #
 # TODO: Switch to Trusty https://github.com/SOCI/soci/issues/574
-dist: trusty
+dist: precise
 language: cpp
 
 # safelist

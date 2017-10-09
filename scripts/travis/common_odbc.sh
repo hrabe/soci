@@ -33,7 +33,7 @@ download_and_install_firebird_driver()
   wget 'https://netcologne.dl.sourceforge.net/project/firebird/firebird-ODBC-driver/2.0.5-Release/OdbcFb-LIB-2.0.5.156.amd64.gz'
   tar -xzf OdbcFb-LIB-2.0.5.156.amd64.gz
   sudo cp libOdbcFb.so /usr/lib/x86_64-linux-gnu/odbc/
-  ln -s /usr/lib/x86_64-linux-gnu/odbc/libfbclient.so.2 /usr/lib/x86_64-linux-gnu/odbc/libgds.so
+  sudo ln -s /usr/lib/x86_64-linux-gnu/odbc/libfbclient.so.2 /usr/lib/x86_64-linux-gnu/odbc/libgds.so
   cat <<EOF >> ./firebird.ini
 [Firebird] 
 Description = InterBase/Firebird ODBC Driver 

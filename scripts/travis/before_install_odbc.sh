@@ -18,4 +18,5 @@ sudo odbcinst -i -d -f /usr/share/libmyodbc/odbcinst.ini
 # v0.91 from precise does not support vectors
 download_and_install_sqlite_driver
 # driver not avail for ubuntu
-download_and_install_firebird_driver
+# download_and_install_firebird_driver
+download_and_install_devart_firebird_driver

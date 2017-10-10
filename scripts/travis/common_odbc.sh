@@ -45,6 +45,22 @@ EOF
   sudo odbcinst -i -d -f ./firebird.ini
 }
 
+download_and_install_devart_firebird_driver()
+{
+  mkdir -p ./devart-driver
+  cd devart-driver
+  wget 'https://www.devart.com/odbc/firebird/devartodbcfirebird-linux.tar'
+  tar -xzf devartodbcfirebird-linux.tar
+  library=$(ls | grep libdevart)
+  echo $library
+  sudo cp $library /usr/lib/x86_64-linux-gnu/odbc/
+  
+  lic="TRAIL"
+  pathodbc="/etc/"
+  sudo ./firebirddodbcsetup_x64 TRAIL $pathodbc "/usr/lib/x86_64-linux-gnu/odbc/"$library x64
+}
+
+
 download_and_compile_sqlite_odbc()
 {
   echo '>>> download and install sqlite odbc driver'

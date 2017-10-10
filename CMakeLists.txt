@@ -180,7 +180,7 @@ if(SOCI_TESTS)
   endif()
   configure_file(${PROJECT_SOURCE_DIR}/cmake/configs/test-sqlite3.cmake ${PROJECT_SOURCE_DIR}/tests/odbc/test-sqlite3.dsn @ONLY)
 
-  set(FIREBIRD_DRIVER_NAME "Firebird")
+  set(FIREBIRD_DRIVER_NAME "Devart ODBC Driver for Firebird x64")
   set(FIREBIRD_DB_NAME "LOCALHOST:/tmp/soci_test.fdb")
   if(WIN32)
     set(FIREBIRD_DRIVER_NAME "Firebird/InterBase(r) driver")

@@ -55,9 +55,9 @@ download_and_install_devart_firebird_driver()
   echo $library
   sudo cp $library /usr/lib/x86_64-linux-gnu/odbc/
   
-  lic="TRAIL"
+  lic="TRIAL"
   pathodbc="/etc/"
-  sudo ./firebirdodbcsetup_x64 TRAIL $pathodbc "/usr/lib/x86_64-linux-gnu/odbc/"$library x64
+  sudo ./firebirdodbcsetup_x64 $lic $pathodbc "/usr/lib/x86_64-linux-gnu/odbc/"$library x64
 }
 
 

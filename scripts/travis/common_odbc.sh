@@ -11,13 +11,16 @@ fi
 download_and_install_sqlite_driver()
 {
   echo ">>> download & install newer ubuntu sqlite libs"
-  mkdir -p ./debs-ubuntu
-  cd debs-ubuntu
-  wget 'http://launchpadlibrarian.net/310407012/libsqlite3-0_3.16.2-3_amd64.deb'
-  wget 'http://launchpadlibrarian.net/310407013/libsqlite3-dev_3.16.2-3_amd64.deb'  
-  wget 'http://launchpadlibrarian.net/295938781/libsqliteodbc_0.9995-1_amd64.deb'
-  cd ..
-  sudo dpkg -i -R --force-depends ./debs-ubuntu/
+  mkdir -p /tmp/ubuntu-deps
+  
+#  mkdir -p ./debs-ubuntu
+#  cd debs-ubuntu
+  wget 'http://launchpadlibrarian.net/310407012/libsqlite3-0_3.16.2-3_amd64.deb' -P /tmp/ubuntu-deps
+  wget 'http://launchpadlibrarian.net/310407013/libsqlite3-dev_3.16.2-3_amd64.deb' -P /tmp/ubuntu-deps
+  wget 'http://launchpadlibrarian.net/295938781/libsqliteodbc_0.9995-1_amd64.deb' -P /tmp/ubuntu-deps
+#  cd ..
+#  sudo dpkg -i -R --force-depends ./debs-ubuntu/
+  sudo dpkg -i -R --force-depends /tmp/ubuntu-deps/
   sudo apt-get -f install
 }
 

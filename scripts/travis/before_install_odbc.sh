@@ -10,7 +10,7 @@ source ${TRAVIS_BUILD_DIR}/scripts/travis/before_install_firebird.sh
 sudo apt-get install -qq \
     tar bzip2 \
     unixodbc-dev \
-    libmyodbc odbc-postgresql libfbclient2 odbc-mdbtools
+    libmyodbc odbc-postgresql libfbclient2 libmdbodbc1
 
 sudo odbcinst -i -d -f /usr/share/libmyodbc/odbcinst.ini
 

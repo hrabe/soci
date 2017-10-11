@@ -121,6 +121,11 @@ class test_context : public tests::test_context_base
             return new TableCreator4(s);
         }
 
+        bool has_multiple_select_bug() const SOCI_OVERRIDE
+        { 
+            return true; 
+        }
+
         std::string to_date_time(std::string const &datdt_string) const SOCI_OVERRIDE
         {
             return "'" + datdt_string + "'";
@@ -130,6 +135,11 @@ class test_context : public tests::test_context_base
         {
             return true;
         }
+        
+        virtual bool enable_std_char_padding(session&) const SOCI_OVERRIDE { 
+            return false; 
+        }
+        
 
         std::string sql_length(std::string const& s) const SOCI_OVERRIDE
         {

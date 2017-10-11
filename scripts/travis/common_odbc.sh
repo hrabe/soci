@@ -90,17 +90,12 @@ download_and_install_firebird_driver_devart_trial2()
   wget 'https://www.devart.com/odbc/firebird/devartodbcfirebird-linux.tar' --progress=bar:force
   tar -xf devartodbcfirebird-linux.tar
   library=$(ls | grep .x64.so)
-  pathodbc=$DEFIODBCINIUNIX
-  lic="TRIAL"
-  echo $library
-  sudo ln -s -f "/tmp/firebird-devart/"$library "/usr/lib/x86_64-linux-gnu/odbc/"$library
-  sudo "/tmp/firebird-devart/"$DBMSNAME"odbcsetup_x64" $lic $pathodbc "/usr/lib/x86_64-linux-gnu/odbc/"$library x64
   popd
-  # sudo cp $library /usr/lib/x86_64-linux-gnu/odbc/
-  #
+  # pathodbc=$DEFIODBCINIUNIX
   # lic="TRIAL"
-  # pathodbc="/etc/"
-  # sudo ./firebirdodbcsetup_x64 $lic $pathodbc "/usr/lib/x86_64-linux-gnu/odbc/"$library x64
+  # echo $library
+  sudo ln -s -f "/tmp/firebird-devart/"$library "/usr/lib/x86_64-linux-gnu/odbc/"$library
+  sudo "/tmp/firebird-devart/"$DBMSNAME"odbcsetup_x64" "TRIAL" "/etc/" "/usr/lib/x86_64-linux-gnu/odbc/"$library x64
 }
 
 

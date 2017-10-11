@@ -13,4 +13,5 @@ NoWait = No
 Data Source=127.0.0.1
 User ID=SYSDBA
 Password=masterkey
-Database=@FIREBIRD_DB_NAME@
+Database=/tmp/soci_test.fdb
+Protocol=TCP

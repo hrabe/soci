@@ -106,6 +106,7 @@ download_and_install_sqlite_driver_devart_trial()
 
 download_and_install_devart_trial_driver()
 {
+  echo ">>> install devart driver for: "$1
   tarfile="devartodbc"$1"-linux.tar"
   url="https://www.devart.com/odbc/"$1"/"$tarfile
   tmpdir="/tmp/devart-"$1

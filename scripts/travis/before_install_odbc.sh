@@ -18,7 +18,14 @@ sudo odbcinst -i -d -f /usr/share/libmyodbc/odbcinst.ini
 # v0.91 from ubuntu precise does not support vectors
 download_and_install_sqlite_driver
 # driver no official ubuntu driver available
-download_and_install_firebird_driver_official
-download_and_install_firebird_driver_devart_trial2
-download_and_install_sqlite_driver_devart_trial
+# download_and_install_firebird_driver_official
+# download_and_install_firebird_driver_devart_trial2
+# download_and_install_sqlite_driver_devart_trial
+
+# db2 has to be installed different
+download_and_install_devart_trial_driver sqlite
+download_and_install_devart_trial_driver mysql
+download_and_install_devart_trial_driver postgresql
+download_and_install_devart_trial_driver firebird
+download_and_install_devart_trial_driver sqlserver
 download_and_install_devart_trial_driver oracle

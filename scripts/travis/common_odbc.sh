@@ -93,6 +93,15 @@ download_and_install_firebird_driver_devart_trial2()
   sudo "/tmp/firebird-devart/firebirdodbcsetup_x64" "TRIAL" "/etc/" "/usr/lib/x86_64-linux-gnu/odbc/"$library x64
 }
 
+download_and_install_sqlite_driver_devart_trial()
+{
+  mkdir -p /tmp/sqlite-devart
+  wget 'https://www.devart.com/odbc/sqlite/devartodbcsqlite-linux.tar' -P /tmp/sqlite-devart/ --progress=bar:force
+  tar -xf /tmp/sqlite-devart/devartodbcsqlite-linux.tar -C /tmp/sqlite-devart/
+  library=$(ls /tmp/sqlite-devart | grep .x64.so)
+  sudo ln -s -f "/tmp/sqlite-devart/"$library "/usr/lib/x86_64-linux-gnu/odbc/"$library
+  sudo "/tmp/sqlite-devart/sqliteodbcsetup_x64" "TRIAL" "/etc/" "/usr/lib/x86_64-linux-gnu/odbc/"$library x64
+}
 
 download_and_compile_sqlite_odbc()
 {

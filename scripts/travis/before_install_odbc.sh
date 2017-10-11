@@ -20,3 +20,4 @@ download_and_install_sqlite_driver
 # driver no official ubuntu driver available
 download_and_install_firebird_driver_official
 download_and_install_firebird_driver_devart_trial2
+download_and_install_sqlite_driver_devart_trial

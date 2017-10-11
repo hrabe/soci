@@ -73,10 +73,10 @@ download_and_install_devart_firebird_driver()
   sudo cp license.txt $path
   sudo cp history.html $path
   # sudo cp "devartodbc"$DBMSNAME".pdf" $path
-  DRIVER_PATH=$path
-  export DRIVER_PATH
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DRIVER_PATH
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/usr/lib:/usr/local/lib' >> ~/.profile
+  # DRIVER_PATH=$path
+  # export DRIVER_PATH
+  # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DRIVER_PATH
+  # echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/usr/lib:/usr/local/lib' >> ~/.profile
   pathodbc=$DEFIODBCINIUNIX
   lic="TRIAL"
   sudo $path"/"$DBMSNAME"odbcsetup_x86" $lic $pathodbc "/usr/lib/x86_64-linux-gnu/odbc/libdevartodbc"$DBMSNAME".x86."$Expr x86

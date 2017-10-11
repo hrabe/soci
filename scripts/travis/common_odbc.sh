@@ -52,7 +52,6 @@ download_and_install_devart_firebird_driver()
   wget 'https://www.devart.com/odbc/firebird/devartodbcfirebird-linux.tar'
   tar -xf devartodbcfirebird-linux.tar
   sudo ./install.sh << EOF
-q
 yes
 
 y

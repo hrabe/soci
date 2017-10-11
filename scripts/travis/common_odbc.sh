@@ -119,12 +119,6 @@ download_and_install_devart_trial_driver()
   sudo $tmpdir"/"$1"odbcsetup_x64" "TRIAL" "/etc/" "/usr/lib/x86_64-linux-gnu/odbc/"$library x64
 }
 
-# https://www.devart.com/odbc/mysql/devartodbcmysql-linux.tar
-# https://www.devart.com/odbc/postgresql/devartodbcpostgresql-linux.tar
-# https://www.devart.com/odbc/oracle/devartodbcoracle-linux.tar
-# https://www.devart.com/odbc/sqlserver/devartodbcsqlserver-linux.tar
-
-
 download_and_compile_sqlite_odbc()
 {
   echo '>>> download and install sqlite odbc driver'

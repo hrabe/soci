@@ -120,6 +120,11 @@ class test_context : public tests::test_context_base
         {
             return new TableCreator4(s);
         }
+        
+        bool has_transactions_support(soci::session&) const SOCI_OVERRIDE
+        { 
+            return false;
+        }
 
         bool has_multiple_select_bug() const SOCI_OVERRIDE
         { 

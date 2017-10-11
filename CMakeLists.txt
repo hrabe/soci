@@ -171,6 +171,10 @@ if(SOCI_TESTS)
   enable_testing()
 
   file(TO_NATIVE_PATH ${PROJECT_SOURCE_DIR} TEST_ACCESS_PATH)
+  set(ACCESS_DRIVER_NAME "MDBTools")
+  if(WIN32)
+    set(ACCESS_DRIVER_NAME "Microsoft Access Driver (*.mdb, *.accdb)")
+  endif()
   configure_file(${PROJECT_SOURCE_DIR}/cmake/configs/test-access.cmake ${PROJECT_SOURCE_DIR}/tests/odbc/test-access.dsn @ONLY)
 
   file(TO_NATIVE_PATH ${PROJECT_SOURCE_DIR} TEST_SQLITE3_PATH)

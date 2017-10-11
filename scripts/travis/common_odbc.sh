@@ -62,7 +62,7 @@ download_and_install_devart_firebird_driver()
 
   Expr="so"
   path="$DEFPATH$DEFDIR"
-  mkdir -p $path
+  sudo mkdir -p $path
   
   sudo cp "libdevartodbc"$DBMSNAME"."$PRODUCTVERSION".x86."$Expr $path
   sudo ln -s -f $path"/libdevartodbc"$DBMSNAME"."$PRODUCTVERSION".x86."$Expr "/usr/local/lib/libdevartodbc"$DBMSNAME".x86".$Expr

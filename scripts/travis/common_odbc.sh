@@ -81,6 +81,7 @@ download_and_install_firebird_driver_devart_trial()
   echo 'remove installer'
   sudo rm -f $path"/"$DBMSNAME"odbcsetup_x64"
   popd
+}
 
 download_and_install_firebird_driver_devart_trial2()
 {  

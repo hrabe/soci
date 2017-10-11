@@ -48,7 +48,7 @@ EOF
 PRODUCTFULLNAME="Devart ODBC Driver for Firebird"
 DBMSNAME="firebird"
 PRODUCTVERSION="2.1.5"
-DEFPATH="/usr/local/"
+DEFPATH="/usr/lib/x86_64-linux-gnu/"
 DEFDIR="devart/odbc"$DBMSNAME
 DEFIODBCINIUNIX="/etc/"
 DEFIODBCINIMAC="/Library/ODBC/"

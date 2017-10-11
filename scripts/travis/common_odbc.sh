@@ -26,9 +26,12 @@ sqlite3_version()
   # sqlite3 --version
 }
 
-download_and_install_firebird_driver()
+download_and_install_firebird_driver_official()
 {
-  wget 'https://netcologne.dl.sourceforge.net/project/firebird/firebird-ODBC-driver/2.0.5-Release/OdbcFb-LIB-2.0.5.156.amd64.gz'
+  echo '>>> download & install official firebird driver'
+  mkdir -p /tmp/firebird-official
+  pushd /tmp/firebird-official
+  wget 'https://netcologne.dl.sourceforge.net/project/firebird/firebird-ODBC-driver/2.0.5-Release/OdbcFb-LIB-2.0.5.156.amd64.gz' --progress=bar:force
   tar -xzf OdbcFb-LIB-2.0.5.156.amd64.gz
   sudo cp libOdbcFb.so /usr/lib/x86_64-linux-gnu/odbc/
   sudo ln -s /usr/lib/x86_64-linux-gnu/odbc/libfbclient.so.2 /usr/lib/x86_64-linux-gnu/odbc/libgds.so
@@ -41,6 +44,7 @@ Threading = 2
 FileUsage = 1
 EOF
   sudo odbcinst -i -d -f ./firebird.ini
+  popd
 }
 
 PRODUCTFULLNAME="Devart ODBC Driver for Firebird"
@@ -51,11 +55,11 @@ DEFDIR="devart/odbc"$DBMSNAME
 DEFIODBCINIUNIX="/etc/"
 DEFIODBCINIMAC="/Library/ODBC/"
 
-download_and_install_devart_firebird_driver()
+download_and_install_firebird_driver_devart_trial()
 {  
-  mkdir -p ./devart-driver
-  cd devart-driver
-  wget 'https://www.devart.com/odbc/firebird/devartodbcfirebird-linux.tar'
+  mkdir -p /tmp/firebird-devart
+  pushd /tmp/firebird-devart
+  wget 'https://www.devart.com/odbc/firebird/devartodbcfirebird-linux.tar' --progress=bar:force
   tar -xf devartodbcfirebird-linux.tar
 
   Expr="so"

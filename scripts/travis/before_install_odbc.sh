@@ -15,8 +15,8 @@ sudo apt-get install -qq \
 sudo odbcinst -i -d -f /usr/share/libmyodbc/odbcinst.ini
 
 # need libsqliteodbc_0.9995 to pass all tests, 
-# v0.91 from precise does not support vectors
+# v0.91 from ubuntu precise does not support vectors
 download_and_install_sqlite_driver
-# driver not avail for ubuntu
-# download_and_install_firebird_driver
-download_and_install_devart_firebird_driver
+# driver no official ubuntu driver available
+download_and_install_firebird_driver_offical
+download_and_install_firebird_driver_devart_trial

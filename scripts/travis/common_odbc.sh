@@ -68,30 +68,33 @@ download_and_install_firebird_driver_devart_trial()
   sudo mkdir -p $path
   
   echo 'copy libs'
-  # sudo cp "libdevartodbc"$DBMSNAME"."$PRODUCTVERSION".x86."$Expr $path
-  # sudo ln -s -f $path"/libdevartodbc"$DBMSNAME"."$PRODUCTVERSION".x86."$Expr "/usr/lib/x86_64-linux-gnu/odbc/libdevartodbc"$DBMSNAME".x86".$Expr
-  # sudo cp $DBMSNAME"odbcsetup_x86" $path
   sudo cp "libdevartodbc"$DBMSNAME"."$PRODUCTVERSION".x64."$Expr $path
   sudo ln -s -f $path"/libdevartodbc"$DBMSNAME"."$PRODUCTVERSION".x64."$Expr "/usr/lib/x86_64-linux-gnu/odbc/libdevartodbc"$DBMSNAME".x64."$Expr
   sudo cp $DBMSNAME"odbcsetup_x64" $path
   sudo cp license.txt $path
   sudo cp history.html $path
-  # sudo cp "devartodbc"$DBMSNAME".pdf" $path
-  # DRIVER_PATH=$path
-  # export DRIVER_PATH
-  # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DRIVER_PATH
-  # echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/usr/lib:/usr/local/lib' >> ~/.profile
+
   pathodbc=$DEFIODBCINIUNIX
   lic="TRIAL"
   echo 'installer'
-  # sudo $path"/"$DBMSNAME"odbcsetup_x86" $lic $pathodbc "/usr/lib/x86_64-linux-gnu/odbc/libdevartodbc"$DBMSNAME".x86."$Expr x86
-  # sudo rm -f $path"/"$DBMSNAME"odbcsetup_x86"
   sudo $path"/"$DBMSNAME"odbcsetup_x64" $lic $pathodbc "/usr/lib/x86_64-linux-gnu/odbc/libdevartodbc"$DBMSNAME".x64."$Expr x64
   echo 'remove installer'
   sudo rm -f $path"/"$DBMSNAME"odbcsetup_x64"
+  popd
 
-  # library=$(ls | grep .x64.so)
-  # echo $library
+download_and_install_firebird_driver_devart_trial2()
+{  
+  mkdir -p /tmp/firebird-devart
+  pushd /tmp/firebird-devart
+  wget 'https://www.devart.com/odbc/firebird/devartodbcfirebird-linux.tar' --progress=bar:force
+  tar -xf devartodbcfirebird-linux.tar
+  library=$(ls | grep .x64.so)
+  pathodbc=$DEFIODBCINIUNIX
+  lic="TRIAL"
+  echo $library
+  sudo ln -s -f $library "/usr/lib/x86_64-linux-gnu/odbc/"$library
+  sudo "./"$DBMSNAME"odbcsetup_x64" $lic $pathodbc "/usr/lib/x86_64-linux-gnu/odbc/"$library x64
+  popd
   # sudo cp $library /usr/lib/x86_64-linux-gnu/odbc/
   #
   # lic="TRIAL"

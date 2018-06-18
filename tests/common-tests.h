@@ -628,6 +628,30 @@ TEST_CASE_METHOD(common_tests, "Use and into", "[core][into]")
         ASSERT_EQUAL(d, pi);
     }
 
+    SECTION("Round trip works for date without time behind year 3001")
+    {
+        std::tm nov15 = std::tm();
+        nov15.tm_year = 2000; // 1101
+        nov15.tm_mon = 10;
+        nov15.tm_mday = 15;
+        nov15.tm_hour = 0;
+        nov15.tm_min = 0;
+        nov15.tm_sec = 0;
+
+        sql << "insert into soci_test(tm) values(:tm)", use(nov15);
+
+        std::vector<std::tm> tv(1);
+        tv[0].tm_isdst = -1;
+        sql << "select tm from soci_test", into(tv);
+        CHECK(tv[0].tm_year == 2000); // 1101
+        CHECK(tv[0].tm_mon  == 10);
+        CHECK(tv[0].tm_mday == 15);
+        CHECK(tv[0].tm_hour == 0);
+        CHECK(tv[0].tm_min  == 0);
+        CHECK(tv[0].tm_sec  == 0);
+        CHECK(tv[0].tm_isdst != -1);
+    }
+
     SECTION("Round trip works for date without time")
     {
         std::tm nov15 = std::tm();
@@ -659,10 +683,12 @@ TEST_CASE_METHOD(common_tests, "Use and into", "[core][into]")
         nov15.tm_hour = 22;
         nov15.tm_min = 14;
         nov15.tm_sec = 17;
+        
 
         sql << "insert into soci_test(tm) values(:tm)", use(nov15);
 
         std::tm t = std::tm();
+        t.tm_isdst = -1;
         sql << "select tm from soci_test", into(t);
         CHECK(t.tm_year == 105);
         CHECK(t.tm_mon  == 10);
